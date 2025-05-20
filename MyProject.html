@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Projects | Sanjeevan S</title>
+  <style>
+    :root {
+      --black-gradient: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+      --gold: #f9c646;
+      --purple: #9b59b6;
+      --text-light: #f1f1f1;
+      --card-bg: #1b1b1b;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--black-gradient);
+      color: var(--text-light);
+      scroll-behavior: smooth;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--card-bg);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: var(--purple);
+    }
+
+    header {
+      background: var(--black-gradient);
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--gold);
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: var(--purple);
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--purple);
+      z-index: 999;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--purple);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px var(--purple);
+    }
+
+    .card h2 {
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: var(--card-bg);
+      color: var(--text-light);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      z-index: 2000;
+      width: 80%;
+      max-width: 600px;
+      border: 2px solid var(--purple);
+    }
+
+    .popup h3 {
+      color: var(--gold);
+    }
+
+    .popup button {
+      margin-top: 20px;
+      background: var(--purple);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      z-index: 1500;
+    }
+    .scroll-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--purple);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 0 15px var(--purple);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    strong {
+      color: var(--gold);
+    }
+
+    a {
+      color: var(--purple);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    body.light-mode {
+      --black-gradient: #fffbe6;
+      --card-bg: #fffaf2;
+      --text-light: #222222;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="details.html">About</a>
+    <a href="MyProject.html">Projects</a>
+    <a href="r.html">Reviews</a>
+    <a href="#details">Details</a>
+  </nav>
+
+  <!-- Theme Toggle Button -->
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <!-- Header -->
+  <header>
+    <h1>My Projects</h1>
+    <p>Selected works showcasing my passion and skills.</p>
+  </header>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="card-container">
+      <div class="card" onclick="showPopup('popup1')">
+        <h2>DevOps Project</h2>
+        <p>Hosting a website using Terraform + AWS S3 with style and automation.</p>
+      </div>
+      </div>
+    </section>
+    <section id="projects">
+      <div class="card" onclick="showPopup('popup2')">
+        <h2>Portfolio Site</h2>
+        <p>Showcasing my personal brand and technical skills with elegance.</p>
+      </div>
+    </div>
+      </section>
+      <section id="projects">
+      <div class="card" onclick="showPopup('popup3')">
+        <h2>Weather App</h2>
+        <p>React UI that fetches real-time data from OpenWeather API.</p>
+      </div>
+    </div>
+  </section>
+  <section id="projects">
+    <div class="card-container">
+      <div class="card" onclick="showPopup('popup1')">
+        <h2>Project 4</h2>
+        <p>Hosting a website using Terraform + AWS S3 with style and automation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popups -->
+  <div id="popup1" class="popup">
+    <h3>DevOps Project Details</h3>
+    <p>This project automates the deployment of a static website using Terraform, AWS S3, and CloudFront with secure HTTPS setup and CI/CD.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="popup2" class="popup">
+    <h3>Portfolio Site Details</h3>
+    <p>A custom-designed portfolio using HTML, CSS, and JavaScript showcasing DevOps and cloud projects with rich UI/UX and animations.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="popup3" class="popup">
+    <h3>Weather App Details</h3>
+    <p>This app fetches and displays real-time weather using the OpenWeatherMap API with a responsive and modern React-based interface.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="popup4" class="popup">
+    <h3>Project 4</h3>
+    <p>This project automates the deployment of a static website using Terraform, AWS S3, and CloudFront with secure HTTPS setup and CI/CD.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="popup5" class="popup">
+    <h3>Project 5</h3>
+    <p>A custom-designed portfolio using HTML, CSS, and JavaScript showcasing DevOps and cloud projects with rich UI/UX and animations.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <div id="popup6" class="popup">
+    <h3>Project 6</h3>
+    <p>This app fetches and displays real-time weather using the OpenWeatherMap API with a responsive and modern React-based interface.</p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+
+  <div id="overlay" class="overlay" onclick="closePopup()"></div>
+
+  <!-- Script -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+    }
+
+    function showPopup(id) {
+      document.getElementById(id).style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
+      document.getElementById('overlay').style.display = 'none';
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>
